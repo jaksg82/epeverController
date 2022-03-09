@@ -11,6 +11,7 @@ This code is developed and tested with:
 
 * Arduino MKRWAN 1310
 * Arduino MKR485 Shield
+* Epever Tracer 5415AN
 
 Using Arduino Libraries:
 
@@ -19,6 +20,7 @@ Using Arduino Libraries:
 
 == Useful resources ==
 
+* https://github.com/glitterkitty/EpEverSolarMonitor
 * https://www.eevblog.com/forum/projects/nodemcu-esp8266-rs485-epever-solar-monitor-diy/
 * https://www.arduino.cc/en/ArduinoModbus/ArduinoModbus
 * https://en.wikipedia.org/wiki/Modbus[Modbus - Wikipedia]
