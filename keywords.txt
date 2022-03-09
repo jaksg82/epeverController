@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring Map For epeverController
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+epeverController	KEYWORD1
+epFlags	KEYWORD1
+epLive	KEYWORD1
+epRtc	KEYWORD1
+epStats	KEYWORD1
+epAddress	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+combine16to32	KEYWORD2
+getFirstByte	KEYWORD2
+getSecondByte	KEYWORD2
+fmtNum	KEYWORD2
+
+setPanelData	KEYWORD2
+setBatteryData	KEYWORD2
+setLoadData	KEYWORD2
+
+getRtc	KEYWORD2
+
+getCsvHeader	KEYWORD2
+getCsvValues	KEYWORD2
+getPanelStr	KEYWORD2
+getBatteryStr	KEYWORD2
+getLoadStr	KEYWORD2
+getRtcStr	KEYWORD2
+getVoltsStr	KEYWORD2
+getConsumedStr	KEYWORD2
+getGeneratedStr	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
