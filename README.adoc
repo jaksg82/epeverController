@@ -8,9 +8,12 @@ This library is based on the sketch https://github.com/glitterkitty/EpEverSolarM
 This library take all the decoding code inside an external library to simplify and declutter the main sketch.
 
 This code is developed and tested with:
+
 * Arduino MKRWAN 1310
 * Arduino MKR485 Shield
+
 Using Arduino Libraries:
+
 * https://github.com/arduino-libraries/ArduinoModbus/[ArduinoModbus]
 * https://github.com/arduino-libraries/ArduinoRS485/[ArduinoRS485]
 
