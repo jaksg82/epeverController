@@ -42,19 +42,49 @@
     "Over WarnTemp",
     "Below WarnTemp"
   };
+
+    char charger_charging_status[][12] = {
+    "Off",
+    "Float",
+    "Boost",
+    "Equlization"
+  };
+
  */
 #ifndef EPFLAGS_H
 #define EPFLAGS_H
 
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
+
 namespace epever {
 
   #include "epController.h"
 
   class epFlags {
     private:
-    uint8_t volt, temp, resistance, ratedVolt;
+    uint8_t voltMode, tempMode, resistance, ratedVolt, chargerMode;
+
+    char voltStatus[4][8] = {
+      "Normal",
+      "OverV",
+      "LowV",
+      "Fault"
+    };
+  
+    char tempStatus[3][8] = {
+      "Normal",
+      "OverT",
+      "LowT"
+    };
+
+    char chargingStatus[4][8] = {
+      "Off",
+      "Float",
+      "Boost",
+      "Equaliz"
+    };
 
     public:
 
