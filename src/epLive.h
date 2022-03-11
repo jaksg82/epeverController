@@ -44,7 +44,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "epeverController.h"
+#include "epConverters.h"
 
 class epLive {
   private:
@@ -55,8 +55,7 @@ class epLive {
   // Constructors
   epLive();
   epLive(uint16_t buf[16]);
-  //epLive(uint16_t w0, uint16_t w1, uint16_t w2, uint16_t w3, uint16_t w4, uint16_t w5, uint16_t w6, uint16_t w7, uint16_t w8, uint16_t w9, uint16_t w10, uint16_t w11);
-
+  
   // Update stored values
   void setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3);
   void setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3);

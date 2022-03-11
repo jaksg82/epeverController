@@ -37,12 +37,12 @@ epRtc::epRtc() {
 }
 epRtc::epRtc(uint16_t buf[]) {
   uint8_t y, M, d, h, m, s;
-  m = epeverController::getFirstByte(buf[0]);
-  s = epeverController::getSecondByte(buf[0]);
-  d = epeverController::getFirstByte(buf[1]);
-  h = epeverController::getSecondByte(buf[1]);
-  y = epeverController::getFirstByte(buf[2]);
-  M = epeverController::getSecondByte(buf[2]);
+  m = epConverters::getFirstByte(buf[0]);
+  s = epConverters::getSecondByte(buf[0]);
+  d = epConverters::getFirstByte(buf[1]);
+  h = epConverters::getSecondByte(buf[1]);
+  y = epConverters::getFirstByte(buf[2]);
+  M = epConverters::getSecondByte(buf[2]);
   struct tm *timeInfo;
   timeInfo->tm_year = 100 + y; // Add 2000 and subtract 1900
   timeInfo->tm_mon = M - 1; // Zero based counter
@@ -55,12 +55,12 @@ epRtc::epRtc(uint16_t buf[]) {
 }
 epRtc::epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2) {
   uint8_t y, M, d, h, m, s;
-  m = epeverController::getFirstByte(hr0);
-  s = epeverController::getSecondByte(hr0);
-  d = epeverController::getFirstByte(hr1);
-  h = epeverController::getSecondByte(hr1);
-  y = epeverController::getFirstByte(hr2);
-  M = epeverController::getSecondByte(hr2);
+  m = epConverters::getFirstByte(hr0);
+  s = epConverters::getSecondByte(hr0);
+  d = epConverters::getFirstByte(hr1);
+  h = epConverters::getSecondByte(hr1);
+  y = epConverters::getFirstByte(hr2);
+  M = epConverters::getSecondByte(hr2);
   struct tm *timeInfo;
   timeInfo->tm_year = 100 + y; // Add 2000 and subtract 1900
   timeInfo->tm_mon = M - 1; // Zero based counter

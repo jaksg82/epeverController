@@ -58,8 +58,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "epeverController.h"
-
   class epFlags {
     private:
     uint8_t voltMode, tempMode, resistance, ratedVolt, chargerMode;

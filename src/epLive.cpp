@@ -42,28 +42,14 @@ epLive::epLive() {
 epLive::epLive(uint16_t buf[16]) {
   pV = buf[0];
   pI = buf[1];
-  pP = epeverController::combine16to32(buf[2], buf[3]);
+  pP = epConverters::combine16to32(buf[2], buf[3]);
   bV = buf[4];
   bI = buf[5];
-  bP = epeverController::combine16to32(buf[6], buf[7]);
+  bP = epConverters::combine16to32(buf[6], buf[7]);
   lV = buf[8];
   lI = buf[9];
-  lP = epeverController::combine16to32(buf[10], buf[11]);
+  lP = epConverters::combine16to32(buf[10], buf[11]);
 }
-
-/*
-epever::epLive::epLive(uint16_t w0, uint16_t w1, uint16_t w2, uint16_t w3, uint16_t w4, uint16_t w5, uint16_t w6, uint16_t w7, uint16_t w8, uint16_t w9, uint16_t w10, uint16_t w11) {
-  pV = w0;
-  pI = w1;
-  pP = epever::epController::combine16to32(w2, w3);
-  bV = w4;
-  bI = w5;
-  bP = epever::epController::combine16to32(w6, w7);
-  lV = w8;
-  lI = w9;
-  lP = epever::epController::combine16to32(w10, w11);
-}
-*/
 
 // ----------------------------------------------------------------------------
 // Update the stored values
@@ -72,19 +58,19 @@ epever::epLive::epLive(uint16_t w0, uint16_t w1, uint16_t w2, uint16_t w3, uint1
 void epLive::setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   pV = val0;
   pI = val1;
-  pP = epeverController::combine16to32(val2, val3);
+  pP = epConverters::combine16to32(val2, val3);
 }
 
 void epLive::setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   bV = val0;
   bI = val1;
-  bP = epeverController::combine16to32(val2, val3);
+  bP = epConverters::combine16to32(val2, val3);
 }
 
 void epLive::setLoadData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   lV = val0;
   lI = val1;
-  lP = epeverController::combine16to32(val2, val3);
+  lP = epConverters::combine16to32(val2, val3);
 }
 
 // ----------------------------------------------------------------------------

@@ -49,15 +49,15 @@ epStats::epStats(uint16_t buf[22]) {
   pVmin = buf[1];
   bVmax = buf[2];
   bVmin = buf[3];
-  consEnerDay = epeverController::combine16to32(buf[4], buf[5]);
-  consEnerMon = epeverController::combine16to32(buf[6], buf[7]);
-  consEnerYear = epeverController::combine16to32(buf[8], buf[9]);
-  consEnerTotal = epeverController::combine16to32(buf[10], buf[11]);
-  genEnerDay = epeverController::combine16to32(buf[12], buf[13]);
-  genEnerMon = epeverController::combine16to32(buf[14], buf[15]);
-  genEnerYear = epeverController::combine16to32(buf[16], buf[17]);
-  genEnerTotal = epeverController::combine16to32(buf[18], buf[19]);
-  c02Reduction = epeverController::combine16to32(buf[20], buf[21]);
+  consEnerDay = epConverters::combine16to32(buf[4], buf[5]);
+  consEnerMon = epConverters::combine16to32(buf[6], buf[7]);
+  consEnerYear = epConverters::combine16to32(buf[8], buf[9]);
+  consEnerTotal = epConverters::combine16to32(buf[10], buf[11]);
+  genEnerDay = epConverters::combine16to32(buf[12], buf[13]);
+  genEnerMon = epConverters::combine16to32(buf[14], buf[15]);
+  genEnerYear = epConverters::combine16to32(buf[16], buf[17]);
+  genEnerTotal = epConverters::combine16to32(buf[18], buf[19]);
+  c02Reduction = epConverters::combine16to32(buf[20], buf[21]);
 }
 
 // ----------------------------------------------------------------------------

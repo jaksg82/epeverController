@@ -39,22 +39,25 @@
 #include "epLive.h"
 #include "epStats.h"
 #include "epFlags.h"
+#include "epConverters.h"
+#include "epAddress.h"
 
-  struct epAddress {
+/*  struct epAddress {
     int type;
     int start;
     int count;
   } address_obj;
+*/
 
   class epeverController {
     public:
     // Modbus registry addresses
-    struct epAddress RtcAdr = {HOLDING_REGISTERS, 0x9013, 3};
-    struct epAddress LiveAdr = {INPUT_REGISTERS, 0x3100, 16};
-    struct epAddress StatisticAdr = {INPUT_REGISTERS, 0x3300, 22};
-    struct epAddress BatterySocAdr = {INPUT_REGISTERS, 0x311A, 1};
-    struct epAddress BatteryCurrentAdr = {INPUT_REGISTERS, 0x331B, 2};
-    struct epAddress StatusFlagsAdr = {INPUT_REGISTERS, 0x3200, 2};
+    epAddress RtcAdr = epAddress(HOLDING_REGISTERS, 0x9013, 3);
+    epAddress LiveAdr = epAddress(INPUT_REGISTERS, 0x3100, 16);
+    epAddress StatisticAdr = epAddress(INPUT_REGISTERS, 0x3300, 22);
+    epAddress BatterySocAdr = epAddress(INPUT_REGISTERS, 0x311A, 1);
+    epAddress BatteryCurrentAdr = epAddress(INPUT_REGISTERS, 0x331B, 2);
+    epAddress StatusFlagsAdr = epAddress(INPUT_REGISTERS, 0x3200, 2);
     
     // Holding values
     uint16_t nodeID = 1;
@@ -66,17 +69,14 @@
     epFlags nodeFlags;
     
     // Constructor
+    epeverController();
     epeverController(uint16_t id);
 
-    // Converting functions
-    static uint32_t combine16to32(uint16_t valL, uint16_t valH);
-    static uint8_t getFirstByte(uint16_t value);
-    static uint8_t getSecondByte(uint16_t value);
-    
     // Output String functions
-    static void fmtNum(uint8_t val, char* retStr[], uint8_t* retSize);
-    void getCsvHeader(char* retStr, uint8_t* retSize);
-    void getCsvValues(char* retStr, uint8_t* retSize);
+    const uint8_t CsvHeaderSize = 128;
+    const uint8_t CsvValueSize = 128;
+    void getCsvHeader(char* retStr);
+    void getCsvValues(char* retStr);
 
   }; // class epController
 

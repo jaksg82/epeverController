@@ -22,32 +22,33 @@
 
 */
 
-#ifndef EPRTC_H
-#define EPRTC_H
+#ifndef EPCONVERTERS_H
+#define EPCONVERTERS_H
 
 #include <stdio.h>
 #include <stdint.h>
-#include <time.h>
 
-#include "epConverters.h"
-
-class epRtc {
-  private:
-  time_t storeTime;
-
+class epConverters {
   public:
-  // Constructor
-  epRtc();
-  epRtc(uint16_t buf[3]);
-  epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2);
+  // Converting functions
+  static uint32_t combine16to32(uint16_t low, uint16_t high) {
+    return (static_cast<uint32_t>(high) << 16) + static_cast<uint32_t>(low);
+  }
 
-  // String
-  uint8_t rtcStringSize = 16;
-  void getRtcStr(char* retStr);
+  static uint8_t getFirstByte(uint16_t value) {
+    return (uint8_t)((value & 0xFF00) >> 8);
+  }
 
-  // Stored values
-  time_t getRtc() { return storeTime; }
+  static uint8_t getSecondByte(uint16_t value) {
+    return (uint8_t)(value & 0x00FF);
+  }
 
-}; //class
+  void fmtNum(uint8_t val, char* retStr) {
+    char ret[3];
+    sprintf(ret, "%02d", val);
+    *retStr = *ret;
+  }
+
+};
 
 #endif

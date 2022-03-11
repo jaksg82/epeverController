@@ -22,32 +22,28 @@
 
 */
 
-#ifndef EPRTC_H
-#define EPRTC_H
+#ifndef EPADDRESS_H
+#define EPADDRESS_H
 
-#include <stdio.h>
-#include <stdint.h>
-#include <time.h>
-
-#include "epConverters.h"
-
-class epRtc {
-  private:
-  time_t storeTime;
-
+class epAddress {
   public:
-  // Constructor
-  epRtc();
-  epRtc(uint16_t buf[3]);
-  epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2);
+  int type;
+  int start;
+  int count;
 
-  // String
-  uint8_t rtcStringSize = 16;
-  void getRtcStr(char* retStr);
+  epAddress() {
+    type = 0;
+    start = 0;
+    count = 0;
+  }
 
-  // Stored values
-  time_t getRtc() { return storeTime; }
+  epAddress(int t, int s, int c) {
+    type = t;
+    start = s;
+    count = c;
+  }
 
-}; //class
+};
+
 
 #endif
