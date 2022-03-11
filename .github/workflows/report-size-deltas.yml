@@ -3,6 +3,7 @@ name: Report Size Deltas
 # See: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
 on:
   push:
+    branches: [ main ]
     paths:
       - ".github/workflows/report-size-deltas.yml"
   schedule:

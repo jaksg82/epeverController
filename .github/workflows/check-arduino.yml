@@ -3,6 +3,7 @@ name: Check Arduino
 # See: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
 on:
   push:
+    branches: [ main ]
   pull_request:
   schedule:
     # Run every Tuesday at 8 AM UTC to catch breakage caused by new rules added to Arduino Lint.
