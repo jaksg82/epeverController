@@ -29,8 +29,7 @@
 #include <stdint.h>
 #include <time.h>
 
-namespace epever {
-#include "epController.h"
+#include "epeverController.h"
 
 class epRtc {
   private:
@@ -39,15 +38,16 @@ class epRtc {
   public:
   // Constructor
   epRtc();
+  epRtc(uint16_t buf[3]);
   epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2);
 
   // String
-  void getRtcStr(char* retStr[], uint8_t* retSize);
+  uint8_t rtcStringSize = 16;
+  void getRtcStr(char* retStr);
 
   // Stored values
   time_t getRtc() { return storeTime; }
 
 }; //class
-}; //namespace
 
 #endif

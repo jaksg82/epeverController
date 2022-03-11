@@ -27,7 +27,7 @@
 // ----------------------------------------------------------------------------
 // Constructors
 // ----------------------------------------------------------------------------
-epever::epLive::epLive() {
+epLive::epLive() {
   pV = 0;
   pI = 0;
   pP = 0;
@@ -39,16 +39,16 @@ epever::epLive::epLive() {
   lP = 0;
 }
 
-epever::epLive::epLive(uint16_t buf[16]) {
+epLive::epLive(uint16_t buf[16]) {
   pV = buf[0];
   pI = buf[1];
-  pP = epever::epController::combine16to32(buf[2], buf[3]);
+  pP = epeverController::combine16to32(buf[2], buf[3]);
   bV = buf[4];
   bI = buf[5];
-  bP = epever::epController::combine16to32(buf[6], buf[7]);
+  bP = epeverController::combine16to32(buf[6], buf[7]);
   lV = buf[8];
   lI = buf[9];
-  lP = epever::epController::combine16to32(buf[10], buf[11]);
+  lP = epeverController::combine16to32(buf[10], buf[11]);
 }
 
 /*
@@ -69,29 +69,29 @@ epever::epLive::epLive(uint16_t w0, uint16_t w1, uint16_t w2, uint16_t w3, uint1
 // Update the stored values
 // ----------------------------------------------------------------------------
 
-void epever::epLive::setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
+void epLive::setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   pV = val0;
   pI = val1;
-  pP = epever::epController::combine16to32(val2, val3);
+  pP = epeverController::combine16to32(val2, val3);
 }
 
-void epever::epLive::setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
+void epLive::setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   bV = val0;
   bI = val1;
-  bP = epever::epController::combine16to32(val2, val3);
+  bP = epeverController::combine16to32(val2, val3);
 }
 
-void epever::epLive::setLoadData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
+void epLive::setLoadData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
   lV = val0;
   lI = val1;
-  lP = epever::epController::combine16to32(val2, val3);
+  lP = epeverController::combine16to32(val2, val3);
 }
 
 // ----------------------------------------------------------------------------
 // Get the csv strings
 // ----------------------------------------------------------------------------
 
-void epever::epLive::getPanelStr(char* retStr[], uint8_t* retSize) {
+void epLive::getPanelStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)26;
   char ret[26];
   float pVs = pV / 100.0f;
@@ -101,7 +101,7 @@ void epever::epLive::getPanelStr(char* retStr[], uint8_t* retSize) {
   *retStr = ret;
 }
 
-void epever::epLive::getBatteryStr(char* retStr[], uint8_t* retSize) {
+void epLive::getBatteryStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)26;
   char ret[26];
   float bVs = bV / 100.0f;
@@ -111,7 +111,7 @@ void epever::epLive::getBatteryStr(char* retStr[], uint8_t* retSize) {
   *retStr = ret;
 }
 
-void epever::epLive::getLoadStr(char* retStr[], uint8_t* retSize) {
+void epLive::getLoadStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)26;
   char ret[26];
   float lVs = lV / 100.0f;

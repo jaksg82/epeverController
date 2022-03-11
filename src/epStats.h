@@ -58,8 +58,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-namespace epever {
-#include "epController.h"
+#include "epeverController.h"
 
 class epStats {
   private:
@@ -85,5 +84,5 @@ class epStats {
   void getCsvStr(char* retStr[], uint8_t* retSize);
 
 }; // class
-}; // namespace
+
 #endif

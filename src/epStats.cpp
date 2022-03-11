@@ -28,7 +28,7 @@
 // Constructors
 // ----------------------------------------------------------------------------
 
-epever::epStats::epStats() {
+epStats::epStats() {
   pVmax = 0;
   pVmin = 0;
   bVmax = 0;
@@ -44,27 +44,27 @@ epever::epStats::epStats() {
   c02Reduction = 0;
 }
 
-epever::epStats::epStats(uint16_t buf[22]) {
+epStats::epStats(uint16_t buf[22]) {
   pVmax = buf[0];
   pVmin = buf[1];
   bVmax = buf[2];
   bVmin = buf[3];
-  consEnerDay = epever::epController::combine16to32(buf[4], buf[5]);
-  consEnerMon = epever::epController::combine16to32(buf[6], buf[7]);
-  consEnerYear = epever::epController::combine16to32(buf[8], buf[9]);
-  consEnerTotal = epever::epController::combine16to32(buf[10], buf[11]);
-  genEnerDay = epever::epController::combine16to32(buf[12], buf[13]);
-  genEnerMon = epever::epController::combine16to32(buf[14], buf[15]);
-  genEnerYear = epever::epController::combine16to32(buf[16], buf[17]);
-  genEnerTotal = epever::epController::combine16to32(buf[18], buf[19]);
-  c02Reduction = epever::epController::combine16to32(buf[20], buf[21]);
+  consEnerDay = epeverController::combine16to32(buf[4], buf[5]);
+  consEnerMon = epeverController::combine16to32(buf[6], buf[7]);
+  consEnerYear = epeverController::combine16to32(buf[8], buf[9]);
+  consEnerTotal = epeverController::combine16to32(buf[10], buf[11]);
+  genEnerDay = epeverController::combine16to32(buf[12], buf[13]);
+  genEnerMon = epeverController::combine16to32(buf[14], buf[15]);
+  genEnerYear = epeverController::combine16to32(buf[16], buf[17]);
+  genEnerTotal = epeverController::combine16to32(buf[18], buf[19]);
+  c02Reduction = epeverController::combine16to32(buf[20], buf[21]);
 }
 
 // ----------------------------------------------------------------------------
 // Get the csv strings
 // ----------------------------------------------------------------------------
 
-void epever::epStats::getVoltsStr(char* retStr[], uint8_t* retSize) {
+void epStats::getVoltsStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)28;
   char ret[28];
   float pVmins = pVmin / 100.0f;
@@ -75,7 +75,7 @@ void epever::epStats::getVoltsStr(char* retStr[], uint8_t* retSize) {
   *retStr = ret;
 }
 
-void epever::epStats::getConsumedStr(char* retStr[], uint8_t* retSize) {
+void epStats::getConsumedStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)32;
   char ret[32];
   float ced = consEnerDay / 100.0f;
@@ -86,7 +86,7 @@ void epever::epStats::getConsumedStr(char* retStr[], uint8_t* retSize) {
   *retStr = ret;
 }
 
-void epever::epStats::getGeneratedStr(char* retStr[], uint8_t* retSize) {
+void epStats::getGeneratedStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)32;
   char ret[32];
   float ged = genEnerDay / 100.0f;
@@ -101,7 +101,7 @@ void epever::epStats::getGeneratedStr(char* retStr[], uint8_t* retSize) {
 //  return "PVmin,PVmax,BVmin,BVmax,ConsEnerDay,ConsEnerMonth,ConsEnerYear,ConsEnerTotal,GenEnerDay,GenEnerMonth,GenEnerYear,GenEnerTotal,CO2Reduction";
 //}
 
-void epever::epStats::getCsvStr(char* retStr[], uint8_t* retSize) {
+void epStats::getCsvStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)104;
   char ret[104];
   float pVmins = pVmin / 100.0f;

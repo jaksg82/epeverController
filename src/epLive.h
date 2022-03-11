@@ -44,8 +44,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-namespace epever {
-#include "epController.h"
+#include "epeverController.h"
 
 class epLive {
   private:
@@ -70,6 +69,5 @@ class epLive {
 
 };
 
-};
 
 #endif

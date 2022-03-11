@@ -37,6 +37,7 @@ getRtcStr	KEYWORD2
 getVoltsStr	KEYWORD2
 getConsumedStr	KEYWORD2
 getGeneratedStr	KEYWORD2
+getFlagsStr KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

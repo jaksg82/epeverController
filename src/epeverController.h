@@ -35,8 +35,6 @@
 #define HOLDING_REGISTERS 2
 #define INPUT_REGISTERS   3
 
-namespace epever {
-
 #include "epRtc.h"
 #include "epLive.h"
 #include "epStats.h"
@@ -48,7 +46,7 @@ namespace epever {
     int count;
   } address_obj;
 
-  class epController {
+  class epeverController {
     public:
     // Modbus registry addresses
     struct epAddress RtcAdr = {HOLDING_REGISTERS, 0x9013, 3};
@@ -68,7 +66,7 @@ namespace epever {
     epFlags nodeFlags;
     
     // Constructor
-    epController(uint16_t id);
+    epeverController(uint16_t id);
 
     // Converting functions
     static uint32_t combine16to32(uint16_t valL, uint16_t valH);
@@ -81,6 +79,5 @@ namespace epever {
     void getCsvValues(char* retStr, uint8_t* retSize);
 
   }; // class epController
-}; // namespace
 
 #endif

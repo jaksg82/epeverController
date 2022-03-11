@@ -27,7 +27,7 @@
 // ----------------------------------------------------------------------------
 // Constructors
 // ----------------------------------------------------------------------------
-epever::epFlags::epFlags() {
+epFlags::epFlags() {
   voltMode = 0;
   tempMode = 0;
   resistance = 0;
@@ -35,7 +35,7 @@ epever::epFlags::epFlags() {
   chargerMode = 0;
 }
 
-epever::epFlags::epFlags(uint16_t buf[2]) {
+epFlags::epFlags(uint16_t buf[2]) {
   voltMode = buf[0] & 0b1111;
   tempMode = (buf[0]  >> 4 ) & 0b1111;
   resistance = (buf[0]  >>  8 ) & 0b1;
@@ -43,7 +43,7 @@ epever::epFlags::epFlags(uint16_t buf[2]) {
   chargerMode = (buf[1] & 0b0000000000001100) >> 2;
 }
 
-epever::epFlags::epFlags(uint16_t hr0, uint16_t hr1) {
+epFlags::epFlags(uint16_t hr0, uint16_t hr1) {
   voltMode = hr0 & 0b1111;
   tempMode = (hr0  >> 4 ) & 0b1111;
   resistance = (hr0  >>  8 ) & 0b1;
@@ -51,7 +51,7 @@ epever::epFlags::epFlags(uint16_t hr0, uint16_t hr1) {
   chargerMode = (hr1 & 0b0000000000001100) >> 2;
 }
 
-void epever::epFlags::getFlagsStr(char* retStr[], uint8_t* retSize) {
+void epFlags::getFlagsStr(char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)44;
   char ret[44];
   sprintf(ret, "%2x,%s,%2x,%s,%3d,%3d,%2x,%s", voltMode, voltStatus[voltMode], tempMode, tempStatus[tempMode], resistance, ratedVolt, chargerMode, chargingStatus[chargerMode]);

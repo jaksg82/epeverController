@@ -22,9 +22,9 @@
 
 */
 
-#include "epController.h"
+#include "epeverController.h"
 
-epever::epController::epController(uint16_t value) {
+epeverController::epeverController(uint16_t value) {
   nodeID = value;
   nodeRtc = epRtc();
   nodeLive = epLive();
@@ -49,7 +49,7 @@ static uint8_t getSecondByte(uint16_t value) {
 
 // Output String functions
 
-void epever::epController::fmtNum(uint8_t val, char* retStr[], uint8_t* retSize) {
+void epeverController::fmtNum(uint8_t val, char* retStr[], uint8_t* retSize) {
   *retSize = (uint8_t)2;
   char ret[2];
   sprintf(ret, "%02d", val);

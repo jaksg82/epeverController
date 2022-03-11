@@ -58,9 +58,7 @@
 #include <stdint.h>
 #include <string.h>
 
-namespace epever {
-
-  #include "epController.h"
+#include "epeverController.h"
 
   class epFlags {
     private:
@@ -97,6 +95,5 @@ namespace epever {
     void getFlagsStr(char* retStr[], uint8_t* retSize);
 
   }; // class
-}; // namespace
 
 #endif
