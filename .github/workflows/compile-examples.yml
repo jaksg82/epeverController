@@ -93,7 +93,6 @@ jobs:
             # See: https://github.com/arduino/compile-sketches#libraries
             - name: ArduinoRS485
             - name: ArduinoModbus
-            - name: TimeLib
           sketch-paths: |
             - examples
           enable-deltas-report: true
