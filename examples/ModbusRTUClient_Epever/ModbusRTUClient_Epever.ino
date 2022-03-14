@@ -1,7 +1,7 @@
 /*
   Modbus RTU Client for Epever Controller
 
-  This sketch creates a Modbus RTU Client that interact wih an Epever Contoller.
+  This sketch creates a Modbus RTU Client that interact with an Epever Controller.
   
   Circuit:
    - MKR board
