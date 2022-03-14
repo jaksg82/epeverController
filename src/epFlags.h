@@ -36,7 +36,7 @@
     "Low Volt Disconnect",
     "Fault"
   };
-  
+
   char batt_temp_status[][16] = {
     "Normal",
     "Over WarnTemp",
@@ -56,42 +56,39 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <string.h>
 
-  class epFlags {
-    private:
-    uint8_t voltMode, tempMode, resistance, ratedVolt, chargerMode;
+class epFlags {
+private:
+  static const uint8_t flagStringSize = 48;
+  uint8_t voltMode, tempMode, resistance, ratedVolt, chargerMode;
 
-    char voltStatus[4][8] = {
+  char voltStatus[4][8] = {
       "Normal",
       "OverV",
       "LowV",
-      "Fault"
-    };
-  
-    char tempStatus[3][8] = {
+      "Fault"};
+
+  char tempStatus[3][8] = {
       "Normal",
       "OverT",
-      "LowT"
-    };
+      "LowT"};
 
-    char chargingStatus[4][8] = {
+  char chargingStatus[4][8] = {
       "Off",
       "Float",
       "Boost",
-      "Equaliz"
-    };
+      "Equaliz"};
 
-    public:
+public:
+  // Constructor
+  epFlags();
+  epFlags(uint16_t buf[2]);
+  epFlags(uint16_t hr0, uint16_t hr1);
 
-    // Constructor
-    epFlags();
-    epFlags(uint16_t buf[2]);
-    epFlags(uint16_t hr0, uint16_t hr1);
-
-    // Get csv strings
-    void getFlagsStr(char* retStr[], uint8_t* retSize);
-
-  }; // class
+  // Get csv strings
+  uint8_t getFlagsStrSize() { return flagStringSize; }
+  char *getFlagsStr();
+  
+}; // class
 
 #endif

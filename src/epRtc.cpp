@@ -25,56 +25,31 @@
 #include "epRtc.h"
 
 epRtc::epRtc() {
-  struct tm *timeInfo;
-  timeInfo->tm_year = 0;
-  timeInfo->tm_mon = 0;
-  timeInfo->tm_mday = 0;
-  timeInfo->tm_hour = 0;
-  timeInfo->tm_min = 0;
-  timeInfo->tm_sec = 0;
-  timeInfo->tm_isdst = 0;
-  storeTime = mktime(timeInfo);
+  storeTime = 0;
 }
 epRtc::epRtc(uint16_t buf[]) {
-  uint8_t y, M, d, h, m, s;
+  //uint8_t y, M, d, h, m, s;
   m = epConverters::getFirstByte(buf[0]);
   s = epConverters::getSecondByte(buf[0]);
   d = epConverters::getFirstByte(buf[1]);
   h = epConverters::getSecondByte(buf[1]);
   y = epConverters::getFirstByte(buf[2]);
   M = epConverters::getSecondByte(buf[2]);
-  struct tm *timeInfo;
-  timeInfo->tm_year = 100 + y; // Add 2000 and subtract 1900
-  timeInfo->tm_mon = M - 1; // Zero based counter
-  timeInfo->tm_mday = d;
-  timeInfo->tm_hour = h;
-  timeInfo->tm_min = m;
-  timeInfo->tm_sec = s;
-  timeInfo->tm_isdst = 0;
-  storeTime = mktime(timeInfo);
+  storeTime = epConverters::makeTime(y, M, d, h, m, s);
 }
 epRtc::epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2) {
-  uint8_t y, M, d, h, m, s;
+  //uint8_t y, M, d, h, m, s;
   m = epConverters::getFirstByte(hr0);
   s = epConverters::getSecondByte(hr0);
   d = epConverters::getFirstByte(hr1);
   h = epConverters::getSecondByte(hr1);
   y = epConverters::getFirstByte(hr2);
   M = epConverters::getSecondByte(hr2);
-  struct tm *timeInfo;
-  timeInfo->tm_year = 100 + y; // Add 2000 and subtract 1900
-  timeInfo->tm_mon = M - 1; // Zero based counter
-  timeInfo->tm_mday = d;
-  timeInfo->tm_hour = h;
-  timeInfo->tm_min = m;
-  timeInfo->tm_sec = s;
-  timeInfo->tm_isdst = 0;
-  storeTime = mktime(timeInfo);
+  storeTime = epConverters::makeTime(y, M, d, h, m, s);
 }
 
-void epRtc::getRtcStr(char* retStr) {
-  char ret[rtcStringSize];
-  struct tm *timeInfo = gmtime(&storeTime);
-  strftime(ret, rtcStringSize, "%Y%m%d-%H%M%S", timeInfo);
-  *retStr = *ret;
+char* epRtc::getRtcStr() {
+  static char timeStr[rtcStringSize];
+  sprintf(timeStr, "20%02d%02d%02d-%02d%02d%02d", y, M, d, h, m, s);
+  return timeStr;
 }

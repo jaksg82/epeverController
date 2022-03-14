@@ -25,7 +25,7 @@
 #include "epeverController.h"
 
 epeverController::epeverController() {
-  nodeID = 1;
+  nodeID = 1; // Default ID
   nodeRtc = epRtc();
   nodeLive = epLive();
   nodeStats = epStats();
@@ -40,12 +40,29 @@ epeverController::epeverController(uint16_t value) {
   nodeFlags = epFlags();
 }
 
-void epeverController::getCsvHeader(char* retStr) {
-  char ret[CsvHeaderSize] = "CSVHeader";
-  *retStr = *ret;
+char * epeverController::getCsvHeader() {
+  static char ret[csvHeaderSize] = "ID,DateTime,PanelV,PanelA,PanelW,BatV,BatA,BatW,LoadV,LoadA,LoadW,BatSOC,BatCurrent,PanelVmin,PanelVmax,BatVmin,BatVmax,ConsDay,ConsMonth,ConsYear,ConsTotal,GenDay,GenMonth,GenYear,GenTotal,Co2red,VoltMode,VoltStatus,TempMode,TempStatus,Resist,RatedV,ChargerMode,ChargerStatus";
+  return ret;
 }
 
-void epeverController::getCsvValues(char* retStr) {
-  char ret[CsvValueSize] = "CSVHeader";
-  *retStr = *ret;
+char * epeverController::getCsvValues() {
+  // nodeID = 3;
+  // rtcStringSize = 16;
+  // liveStringSize = 68;
+  // statsStringSize = 140;
+  // flagStringSize = 48;
+  // total required size = 280 + 4commas = 284;
+  static char ret[csvValueSize];
+  char epc[6];
+  sprintf(epc, "%3u", nodeID);
+  strcat(ret, epc);
+  strcat(ret, ",");
+  strcat(ret, nodeRtc.getRtcStr());
+  strcat(ret, ",");
+  strcat(ret, nodeLive.getLiveStr());
+  strcat(ret, ",");
+  strcat(ret, nodeStats.getStatsStr());
+  strcat(ret, ",");
+  strcat(ret, nodeFlags.getFlagsStr());
+  return ret;
 }

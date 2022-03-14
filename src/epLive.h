@@ -50,21 +50,29 @@ class epLive {
   private:
   int16_t pV, pI, bV, bI, lV, lI;  // Volts & Amperes to be scaled
   int32_t pP, bP, lP;              // Watts to be scaled
+  uint16_t batSoc;                 // Percentage of battery capacity
+  static const uint8_t liveStringSize = 68;
 
   public:
   // Constructors
   epLive();
-  epLive(uint16_t buf[16]);
+  epLive(uint16_t buf[27]);
   
-  // Update stored values
-  void setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3);
-  void setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3);
-  void setLoadData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3);
+  // Expose Live values
+  float BatteryVolts() { return bV / 100.0f; }
+  float BatteryAmperes() { return bI / 100.0f; }
+  float BatteryWatts() { return bP / 100.0f; }
+  float PanelVolts() { return pV / 100.0f; }
+  float PanelAmperes() { return pI / 100.0f; }
+  float PanelWatts() { return pP / 100.0f; }
+  float LoadVolts() { return lV / 100.0f; }
+  float LoadAmperes() { return lI / 100.0f; }
+  float LoadWatts() { return lP / 100.0f; }
+  uint16_t BatterySOC() { return batSoc; }
 
   // Get the csv strings
-  void getPanelStr(char* retStr[], uint8_t* retSize);
-  void getBatteryStr(char* retStr[], uint8_t* retSize);
-  void getLoadStr(char* retStr[], uint8_t* retSize);
+  uint8_t getLiveStrSize() { return liveStringSize; }
+  char* getLiveStr();
 
 };
 

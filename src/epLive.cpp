@@ -39,7 +39,7 @@ epLive::epLive() {
   lP = 0;
 }
 
-epLive::epLive(uint16_t buf[16]) {
+epLive::epLive(uint16_t buf[27]) {
   pV = buf[0];
   pI = buf[1];
   pP = epConverters::combine16to32(buf[2], buf[3]);
@@ -49,60 +49,25 @@ epLive::epLive(uint16_t buf[16]) {
   lV = buf[8];
   lI = buf[9];
   lP = epConverters::combine16to32(buf[10], buf[11]);
-}
-
-// ----------------------------------------------------------------------------
-// Update the stored values
-// ----------------------------------------------------------------------------
-
-void epLive::setPanelData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
-  pV = val0;
-  pI = val1;
-  pP = epConverters::combine16to32(val2, val3);
-}
-
-void epLive::setBatteryData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
-  bV = val0;
-  bI = val1;
-  bP = epConverters::combine16to32(val2, val3);
-}
-
-void epLive::setLoadData(uint16_t val0, uint16_t val1, uint16_t val2, uint16_t val3) {
-  lV = val0;
-  lI = val1;
-  lP = epConverters::combine16to32(val2, val3);
+  batSoc = buf[26];
 }
 
 // ----------------------------------------------------------------------------
 // Get the csv strings
 // ----------------------------------------------------------------------------
 
-void epLive::getPanelStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)26;
-  char ret[26];
+char* epLive::getLiveStr() {
+  static char ret[liveStringSize];
   float pVs = pV / 100.0f;
   float pIs = pI / 100.0f;
   float pPs = pP / 100.0f;
-  sprintf(ret, "%6.2fV, %6.2fA, %6.2fW", pVs, pIs, pPs);
-  *retStr = ret;
-}
-
-void epLive::getBatteryStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)26;
-  char ret[26];
   float bVs = bV / 100.0f;
   float bIs = bI / 100.0f;
   float bPs = bP / 100.0f;
-  sprintf(ret, "%6.2fV, %6.2fA, %6.2fW", bVs, bIs, bPs);
-  *retStr = ret;
-}
-
-void epLive::getLoadStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)26;
-  char ret[26];
   float lVs = lV / 100.0f;
   float lIs = lI / 100.0f;
   float lPs = lP / 100.0f;
-  sprintf(ret, "%6.2fV, %6.2fA, %6.2fW", lVs, lIs, lPs);
-  *retStr = ret;
+  sprintf(ret, "%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%3u", pVs, pIs, pPs, bVs, bIs, bPs, lVs, lIs, lPs, batSoc);
+  
+  return ret;
 }

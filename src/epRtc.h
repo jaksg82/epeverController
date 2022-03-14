@@ -27,13 +27,15 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <time.h>
 
 #include "epConverters.h"
 
 class epRtc {
   private:
-  time_t storeTime;
+  uint32_t storeTime;
+  uint8_t y, M, d, h, m, s;
+  static const uint8_t rtcStringSize = 16;
+  static char timeStr[rtcStringSize];
 
   public:
   // Constructor
@@ -42,11 +44,11 @@ class epRtc {
   epRtc(uint16_t hr0, uint16_t hr1, uint16_t hr2);
 
   // String
-  uint8_t rtcStringSize = 16;
-  void getRtcStr(char* retStr);
+  uint8_t getRtcStrSize() { return rtcStringSize; }
+  char* getRtcStr();
 
   // Stored values
-  time_t getRtc() { return storeTime; }
+  uint32_t getRtc() { return storeTime; }
 
 }; //class
 

@@ -51,9 +51,8 @@ epFlags::epFlags(uint16_t hr0, uint16_t hr1) {
   chargerMode = (hr1 & 0b0000000000001100) >> 2;
 }
 
-void epFlags::getFlagsStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)44;
-  char ret[44];
+char* epFlags::getFlagsStr() {
+  static char ret[flagStringSize];
   sprintf(ret, "%2x,%s,%2x,%s,%3d,%3d,%2x,%s", voltMode, voltStatus[voltMode], tempMode, tempStatus[tempMode], resistance, ratedVolt, chargerMode, chargingStatus[chargerMode]);
-  *retStr = ret;
+  return ret;
 }

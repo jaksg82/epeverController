@@ -44,7 +44,7 @@ epStats::epStats() {
   c02Reduction = 0;
 }
 
-epStats::epStats(uint16_t buf[22]) {
+epStats::epStats(uint16_t buf[29]) {
   pVmax = buf[0];
   pVmin = buf[1];
   bVmax = buf[2];
@@ -58,52 +58,15 @@ epStats::epStats(uint16_t buf[22]) {
   genEnerYear = epConverters::combine16to32(buf[16], buf[17]);
   genEnerTotal = epConverters::combine16to32(buf[18], buf[19]);
   c02Reduction = epConverters::combine16to32(buf[20], buf[21]);
+  batteryCurrent = epConverters::combine16to32(buf[27], buf[28]);
 }
 
 // ----------------------------------------------------------------------------
 // Get the csv strings
 // ----------------------------------------------------------------------------
 
-void epStats::getVoltsStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)28;
-  char ret[28];
-  float pVmins = pVmin / 100.0f;
-  float pVmaxs = pVmax / 100.0f;
-  float bVmins = bVmin / 100.0f;
-  float bVmaxs = bVmax / 100.0f;
-  sprintf(ret, "%6.2f,%6.2f,%6.2f,%6.2f", pVmins, pVmaxs, bVmins, bVmaxs);
-  *retStr = ret;
-}
-
-void epStats::getConsumedStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)32;
-  char ret[32];
-  float ced = consEnerDay / 100.0f;
-  float cem = consEnerMon / 100.0f;
-  float cey = consEnerYear / 100.0f;
-  float cet = consEnerTotal / 100.0f;
-  sprintf(ret, "%7.2f,%7.2f,%8.2f,%8.2f", ced, cem, cey, cet);
-  *retStr = ret;
-}
-
-void epStats::getGeneratedStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)32;
-  char ret[32];
-  float ged = genEnerDay / 100.0f;
-  float gem = genEnerMon / 100.0f;
-  float gey = genEnerYear / 100.0f;
-  float get = genEnerTotal / 100.0f;
-  sprintf(ret, "%7.2f,%7.2f,%8.2f,%8.2f", ged, gem, gey, get);
-  *retStr = ret;
-}
-
-//void epever::epStats::getCsvHdrStr() {
-//  return "PVmin,PVmax,BVmin,BVmax,ConsEnerDay,ConsEnerMonth,ConsEnerYear,ConsEnerTotal,GenEnerDay,GenEnerMonth,GenEnerYear,GenEnerTotal,CO2Reduction";
-//}
-
-void epStats::getCsvStr(char* retStr[], uint8_t* retSize) {
-  *retSize = (uint8_t)104;
-  char ret[104];
+char* epStats::getStatsStr() {
+  static char ret[statsStringSize];
   float pVmins = pVmin / 100.0f;
   float pVmaxs = pVmax / 100.0f;
   float bVmins = bVmin / 100.0f;
@@ -117,6 +80,8 @@ void epStats::getCsvStr(char* retStr[], uint8_t* retSize) {
   float gey = genEnerYear / 100.0f;
   float get = genEnerTotal / 100.0f;
   float co2s = c02Reduction / 100.0f;
-  sprintf(ret, "%6.2f,%6.2f,%6.2f,%6.2f,%7.2f,%7.2f,%8.2f,%8.2f,%7.2f,%7.2f,%8.2f,%8.2f,%7.2f", pVmins, pVmaxs, bVmins, bVmaxs, ced, cem, cey, cet, ged, gem, gey, get, co2s);
-  *retStr = ret;
+  float batCs = batteryCurrent / 100.0f;
+  sprintf(ret, "%6.2f,%6.2f,%6.2f,%6.2f,%6.2f,%7.2f,%7.2f,%8.2f,%8.2f,%7.2f,%7.2f,%8.2f,%8.2f,%7.2f", batCs, pVmins, pVmaxs, bVmins, bVmaxs, ced, cem, cey, cet, ged, gem, gey, get, co2s);
+  
+  return ret;
 }

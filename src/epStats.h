@@ -65,23 +65,27 @@ class epStats {
   uint16_t pVmax, pVmin, bVmax, bVmin;
   uint32_t consEnerDay, consEnerMon, consEnerYear, consEnerTotal;
   uint32_t genEnerDay, genEnerMon, genEnerYear, genEnerTotal;
-  uint32_t c02Reduction;
-    
+  uint32_t c02Reduction, batteryCurrent;
+  
+  static const uint8_t statsStringSize = 140;
+  //static char statsStr[statsStringSize];
+
   public:
 
   // ----------------------------------------------------------------------------
   // Constructors
   // ----------------------------------------------------------------------------
   epStats();
-  epStats(uint16_t buf[22]);
+  epStats(uint16_t buf[29]);
 
   // ----------------------------------------------------------------------------
   // Get the csv strings
   // ----------------------------------------------------------------------------
-  void getVoltsStr(char* retStr[], uint8_t* retSize);
-  void getConsumedStr(char* retStr[], uint8_t* retSize);
-  void getGeneratedStr(char* retStr[], uint8_t* retSize);
-  void getCsvStr(char* retStr[], uint8_t* retSize);
+  uint8_t getStatsStrSize() { return statsStringSize; }
+  //void getVoltsStr(char* retStr[], uint8_t* retSize);
+  //void getConsumedStr(char* retStr[], uint8_t* retSize);
+  //void getGeneratedStr(char* retStr[], uint8_t* retSize);
+  char* getStatsStr();
 
 }; // class
 

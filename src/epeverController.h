@@ -24,16 +24,10 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
+#include <string.h>
 
 #ifndef EPCONTROLLER_H
 #define EPCONTROLLER_H
-
-// Defines copied from ArduinoModbus
-#define COILS             0
-#define DISCRETE_INPUTS   1
-#define HOLDING_REGISTERS 2
-#define INPUT_REGISTERS   3
 
 #include "epRtc.h"
 #include "epLive.h"
@@ -42,42 +36,44 @@
 #include "epConverters.h"
 #include "epAddress.h"
 
-/*  struct epAddress {
-    int type;
-    int start;
-    int count;
-  } address_obj;
-*/
+class epeverController {
+  private:
+  // Defines copied from ArduinoModbus
+  static const uint8_t coils = 0;            // #define COILS 0
+  static const uint8_t discreteInputs = 1;   // #define DISCRETE_INPUTS 1
+  static const uint8_t holdingRegisters = 2; // #define HOLDING_REGISTERS 2
+  static const uint8_t inputRegisters = 3;   // #define INPUT_REGISTERS 3
+  static const uint16_t csvHeaderSize = 280;
+  static const uint16_t csvValueSize = 290;
 
-  class epeverController {
-    public:
-    // Modbus registry addresses
-    epAddress RtcAdr = epAddress(HOLDING_REGISTERS, 0x9013, 3);
-    epAddress LiveAdr = epAddress(INPUT_REGISTERS, 0x3100, 16);
-    epAddress StatisticAdr = epAddress(INPUT_REGISTERS, 0x3300, 22);
-    epAddress BatterySocAdr = epAddress(INPUT_REGISTERS, 0x311A, 1);
-    epAddress BatteryCurrentAdr = epAddress(INPUT_REGISTERS, 0x331B, 2);
-    epAddress StatusFlagsAdr = epAddress(INPUT_REGISTERS, 0x3200, 2);
-    
-    // Holding values
-    uint16_t nodeID = 1;
-    uint16_t batterySOC = 0;
-    uint32_t batteryCurrent = 0;
-    epRtc nodeRtc;
-    epLive nodeLive;
-    epStats nodeStats;
-    epFlags nodeFlags;
-    
-    // Constructor
-    epeverController();
-    epeverController(uint16_t id);
+public:
+  // Modbus registry addresses
+  epAddress RtcAdr = epAddress(holdingRegisters, 0x9013, 3);
+  epAddress LiveAdr = epAddress(inputRegisters, 0x3100, 27);
+  epAddress StatisticAdr = epAddress(inputRegisters, 0x3300, 29);
+  //epAddress BatterySocAdr = epAddress(inputRegisters, 0x311A, 1); // Incorporated in epLive
+  //epAddress BatteryCurrentAdr = epAddress(inputRegisters, 0x331B, 2);  // Incorporated in epStats
+  epAddress StatusFlagsAdr = epAddress(inputRegisters, 0x3200, 2);
 
-    // Output String functions
-    const uint8_t CsvHeaderSize = 128;
-    const uint8_t CsvValueSize = 128;
-    void getCsvHeader(char* retStr);
-    void getCsvValues(char* retStr);
+  // Holding values
+  uint16_t nodeID = 1;
+  //uint16_t batterySOC = 0;
+  //uint32_t batteryCurrent = 0;
+  epRtc nodeRtc;
+  epLive nodeLive;
+  epStats nodeStats;
+  epFlags nodeFlags;
 
-  }; // class epController
+  // Constructor
+  epeverController();
+  epeverController(uint16_t id);
+
+  // Output String functions
+  uint16_t getCsvHeaderSize() { return csvHeaderSize; }
+  uint16_t getCsvValueSize() { return csvValueSize; }
+  char *getCsvHeader();
+  char *getCsvValues();
+
+}; // class epController
 
 #endif
