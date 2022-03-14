@@ -47,21 +47,36 @@ jobs:
           - fqbn: arduino:megaavr:nona4809
             platforms: |
               - name: arduino:megaavr
-          - fqbn: arduino:sam:arduino_due_x_dbg
-            platforms: |
-              - name: arduino:sam
-          - fqbn: arduino:samd:arduino_zero_edbg
+          - fqbn: arduino:samd:mkrzero
             platforms: |
               - name: arduino:samd
-          - fqbn: arduino:samd:mkrzero
+          - fqbn: arduino:samd:mkr1000
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrwifi1010
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrfox1200
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrwan1300
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrwan1310
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrgsm1400
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrnb1500
+            platforms: |
+              - name: arduino:samd
+          - fqbn: arduino:samd:mkrvidor4000
             platforms: |
               - name: arduino:samd
           - fqbn: arduino:samd:nano_33_iot
             platforms: |
               - name: arduino:samd
-          - fqbn: arduino:mbed_portenta:envie_m4
-            platforms: |
-              - name: arduino:mbed_portenta
           - fqbn: arduino:mbed_portenta:envie_m7
             platforms: |
               - name: arduino:mbed_portenta
