@@ -17,7 +17,6 @@
   by Simone Giacomoni
 */
 
-#include <TimeLib.h>
 #include <ArduinoRS485.h> // ArduinoModbus depends on the ArduinoRS485 library
 #include <ArduinoModbus.h>
 #include <epeverController.h>
