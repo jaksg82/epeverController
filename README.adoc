@@ -19,8 +19,15 @@ This code is developed and tested with:
 
 Using Arduino Libraries:
 
-* https://github.com/arduino-libraries/ArduinoModbus/[ArduinoModbus]
 * https://github.com/arduino-libraries/ArduinoRS485/[ArduinoRS485]
+* https://github.com/arduino-libraries/ArduinoModbus/[ArduinoModbus]
+
+NOTE: The ArduinoModbus library is incompatible with the ArduinoIoTCloud library.
+The solution is to use the following combination of libraries: (Example not available at the moment.)
+
+* https://github.com/arduino-libraries/ArduinoIoTCloud/[ArduinoIoTCloud]
+* https://github.com/arduino-libraries/ArduinoRS485/[ArduinoRS485]
+* https://github.com/4-20ma/ModbusMaster/[ModbusMaster]
 
 == Useful resources ==
 

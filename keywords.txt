@@ -12,6 +12,7 @@ epLive	KEYWORD1
 epRtc	KEYWORD1
 epStats	KEYWORD1
 epAddress	KEYWORD1
+epConverters	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,7 +21,8 @@ epAddress	KEYWORD1
 combine16to32	KEYWORD2
 getFirstByte	KEYWORD2
 getSecondByte	KEYWORD2
-fmtNum	KEYWORD2
+makeTime	KEYWORD2
+isLeapYear	KEYWORD2
 
 setPanelData	KEYWORD2
 setBatteryData	KEYWORD2
@@ -34,6 +36,7 @@ getPanelStr	KEYWORD2
 getBatteryStr	KEYWORD2
 getLoadStr	KEYWORD2
 getRtcStr	KEYWORD2
+getYMD	KEYWORD2
 getVoltsStr	KEYWORD2
 getConsumedStr	KEYWORD2
 getGeneratedStr	KEYWORD2
@@ -43,7 +46,12 @@ getFlagsStr KEYWORD2
 # Constants (LITERAL1)
 #######################################
 
-COILS	LITERAL1
-DISCRETE_INPUTS	LITERAL1
-HOLDING_REGISTERS	LITERAL1
-INPUT_REGISTERS	LITERAL1
+nodeRtc	LITERAL1
+nodeLive	LITERAL1
+nodeStats	LITERAL1
+nodeFlags	LITERAL1
+RtcAdr	LITERAL1
+LiveAdr	LITERAL1
+StatisticAdr	LITERAL1
+StatusFlagsAdr	LITERAL1
+nodeID	LITERAL1

@@ -46,6 +46,7 @@ class epRtc {
   // String
   uint8_t getRtcStrSize() { return rtcStringSize; }
   char* getRtcStr();
+  char* getYMD();
 
   // Stored values
   uint32_t getRtc() { return storeTime; }

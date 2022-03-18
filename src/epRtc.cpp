@@ -53,3 +53,9 @@ char* epRtc::getRtcStr() {
   sprintf(timeStr, "20%02d%02d%02d-%02d%02d%02d", y, M, d, h, m, s);
   return timeStr;
 }
+
+char* epRtc::getYMD() {
+  static char timeStr[rtcStringSize];
+  sprintf(timeStr, "20%02d%02d%02d", y, M, d, h, m, s);
+  return timeStr;
+}
