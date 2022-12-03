@@ -29,24 +29,6 @@ jobs:
 
       matrix:
         board:
-          - fqbn: arduino:avr:nano
-            platforms: |
-              - name: arduino:avr
-          - fqbn: arduino:avr:mega
-            platforms: |
-              - name: arduino:avr
-          - fqbn: arduino:avr:leonardo
-            platforms: |
-              - name: arduino:avr
-          - fqbn: arduino:avr:yun
-            platforms: |
-              - name: arduino:avr
-          - fqbn: arduino:megaavr:uno2018
-            platforms: |
-              - name: arduino:megaavr
-          - fqbn: arduino:megaavr:nona4809
-            platforms: |
-              - name: arduino:megaavr
           - fqbn: arduino:samd:mkrzero
             platforms: |
               - name: arduino:samd
@@ -77,18 +59,6 @@ jobs:
           - fqbn: arduino:samd:nano_33_iot
             platforms: |
               - name: arduino:samd
-          - fqbn: arduino:mbed_portenta:envie_m7
-            platforms: |
-              - name: arduino:mbed_portenta
-          - fqbn: arduino:mbed_edge:edge_control
-            platforms: |
-              - name: arduino:mbed_edge
-          - fqbn: arduino:mbed_nano:nano33ble
-            platforms: |
-              - name: arduino:mbed_nano
-          - fqbn: arduino:mbed_nano:nanorp2040connect
-            platforms: |
-              - name: arduino:mbed_nano
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
