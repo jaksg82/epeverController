@@ -79,6 +79,24 @@ class epStats {
   epStats(uint16_t buf[29]);
 
   // ----------------------------------------------------------------------------
+  // Expose the statistic values
+  // ----------------------------------------------------------------------------
+  float PanelVoltsMin() { return pVmin / 100.0f; }
+  float PanelVoltsMax() { return pVmax / 100.0f; }
+  float BatteryVoltsMin() { return bVmin / 100.0f; }
+  float BatteryVoltsMax() { return bVmax / 100.0f; }
+  float ConsumedPowerDay() { return consEnerDay / 100.0f; }
+  float ConsumedPowerMonth() { return consEnerMon / 100.0f; }
+  float ConsumedPowerYear() { return consEnerYear / 100.0f; }
+  float ProducedPowerTotal() { return consEnerTotal / 100.0f; }
+  float ProducedPowerDay() { return genEnerDay / 100.0f; }
+  float ProducedPowerMonth() { return genEnerMon / 100.0f; }
+  float ProducedPowerYear() { return genEnerYear / 100.0f; }
+  float ProducedPowerTotal() { return genEnerTotal / 100.0f; }
+  float CO2Reduction() { return c02Reduction / 100.0f; }
+  float BatteryCurrent() { return batteryCurrent / 100.0f; }
+ 
+  // ----------------------------------------------------------------------------
   // Get the csv strings
   // ----------------------------------------------------------------------------
   uint8_t getStatsStrSize() { return statsStringSize; }
