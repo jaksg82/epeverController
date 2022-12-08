@@ -88,7 +88,7 @@ class epStats {
   float ConsumedPowerDay() { return consEnerDay / 100.0f; }
   float ConsumedPowerMonth() { return consEnerMon / 100.0f; }
   float ConsumedPowerYear() { return consEnerYear / 100.0f; }
-  float ProducedPowerTotal() { return consEnerTotal / 100.0f; }
+  float ConsumedPowerTotal() { return consEnerTotal / 100.0f; }
   float ProducedPowerDay() { return genEnerDay / 100.0f; }
   float ProducedPowerMonth() { return genEnerMon / 100.0f; }
   float ProducedPowerYear() { return genEnerYear / 100.0f; }
