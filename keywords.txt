@@ -17,30 +17,60 @@ epConverters	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-
+# epConverters.h
 combine16to32	KEYWORD2
 getFirstByte	KEYWORD2
 getSecondByte	KEYWORD2
 makeTime	KEYWORD2
 isLeapYear	KEYWORD2
 
-setPanelData	KEYWORD2
-setBatteryData	KEYWORD2
-setLoadData	KEYWORD2
+# epFlags.h
+getFlagsStrSize	KEYWORD2
+getFlagsStr KEYWORD2
 
-getRtc	KEYWORD2
+# epLive.h
+BatteryVolts	KEYWORD2
+BatteryAmperes	KEYWORD2
+BatteryWatts	KEYWORD2
+PanelVolts	KEYWORD2
+PanelAmperes	KEYWORD2
+PanelWatts	KEYWORD2
+LoadVolts	KEYWORD2
+LoadAmperes	KEYWORD2
+LoadWatts	KEYWORD2
+BatterySOC	KEYWORD2
+getLiveStrSize	KEYWORD2
+getLiveStr	KEYWORD2
 
-getCsvHeader	KEYWORD2
-getCsvValues	KEYWORD2
-getPanelStr	KEYWORD2
-getBatteryStr	KEYWORD2
-getLoadStr	KEYWORD2
+# epRtc.h
+getRtcStrSize	KEYWORD2
 getRtcStr	KEYWORD2
 getYMD	KEYWORD2
-getVoltsStr	KEYWORD2
-getConsumedStr	KEYWORD2
-getGeneratedStr	KEYWORD2
-getFlagsStr KEYWORD2
+getRtc	KEYWORD2
+
+# epStats.h
+PanelVoltsMin	KEYWORD2
+PanelVoltsMax	KEYWORD2
+BatteryVoltsMin	KEYWORD2
+BatteryVoltsMax	KEYWORD2
+ConsumedPowerDay	KEYWORD2
+ConsumedPowerMonth	KEYWORD2
+ConsumedPowerYear	KEYWORD2
+ConsumedPowerTotal	KEYWORD2
+ProducedPowerDay	KEYWORD2
+ProducedPowerMonth	KEYWORD2
+ProducedPowerYear	KEYWORD2
+ProducedPowerTotal	KEYWORD2
+CO2Reduction	KEYWORD2
+BatteryCurrent	KEYWORD2
+getStatsStrSize	KEYWORD2
+getStatsStr	KEYWORD2
+
+# epeverController.h
+getCsvHeaderSize	KEYWORD2
+getCsvValueSize	KEYWORD2
+getCsvHeader	KEYWORD2
+getCsvValues	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
